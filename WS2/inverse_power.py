@@ -1,38 +1,31 @@
 import numpy as np
 
-
-def func(a,x):
+row=int(input("Enter row size : "))
+col=int(input("Enter col size : "))
+a_matrix=np.zeros((row,col))
+a_inv_matrix=np.zeros((row,col))
+x_matrix=np.zeros((row,1))
+x1_matrix=np.zeros((row,1))
+n=0
+print("\nEnter array elements")
+for i in range(0,row):
+    for j in range(0,col):
+        a_matrix[i][j]=int(input())
+print("\nEnter intial matrix")
+for i in range(0,row):
+    x_matrix[i][0]=int(input())
+   
+a_inv_matrix=np.linalg.inv(a_matrix).copy()
+while n<6:
+    x1_matrix=np.dot(a_inv_matrix,x_matrix)
+    x_matrix=x1_matrix.copy()
+    n=n+1;
+print("\nDominant Eigenvector")
+for i in range(0,row):
+    print(x_matrix[i][0]," ")
     
-    for i in range(10):
-        x = np.dot(a, x)
-        x_n = x / x.max()
-    print('Power method:')
-    print('Eigenvector of matrix {} is {}:'.format(a, x_n))
-    find_ray(a,x_n)
-    print("\n")
-    
-def find_ray(a,x_n):
-    h=np.dot(a,x_n)
-    m=np.dot(h,x_n)
-    
-    x_2=np.dot(x_n,x_n)
-    dom_eival=m/x_2
-    print('Reyleigh quotient method:')
-    print('The dominant eigen value for matrix {} is {:.2f}'.format(a.tolist(),dom_eival))
-    print("\n\n")
-    
-
-
-ab = np.array([[2, -12], 
-              [1, -5]]) 
-
-a=np.array([[2,-1,0],[-1,2,-1],[0,-1,2]])  
-x=np.array([1,1,1]) 
-b=np.array([[-5,0,0],[3,7,0],[4,-2,3]])
-c=np.array([[1,2,-2],[-2,5,-2],[-6,6,-3]])
-x1=np.array([1,1,1])
-#func(ab,x)
-ain = np.linalg.inv(a)
-func(ain,x)
-# func(b,x1)
-# func(c,x1)
+   
+value=(np.dot(a_inv_matrix,x_matrix)*x_matrix)
+value1=x_matrix*x_matrix
+print("\nDominant Eigenvalue")
+print(value/value1)
