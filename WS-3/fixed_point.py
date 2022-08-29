@@ -22,7 +22,7 @@ def Qa(): return 'cos(x)*((2.7182)**(x))'
 print("a  => {}".format(fixed_point_method(Qa, 0.5, 0.55)))
 
 #b
-def Qb(): return 'x**4 -10'
+def Qb(): return 'cos(x) - 3*x + 1'
 print("b  => {}".format(fixed_point_method(Qb, 1.84, 1.86)))
 
 #c
